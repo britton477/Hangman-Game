@@ -4,14 +4,17 @@ import ascii_art
 
 game_on = True
 
+# I use a while loop here to add replayability
 while True:
+    # define the variables for the game
     stages = ascii_art.stages
     chosen_word = random.choice(word_list.word_list)
     word_length = len(chosen_word)
     display = []
     life = 6
     letters = []
-
+    
+    # This creates the blank spaces for the game
     for letter in chosen_word:
         display.append("_")
 
@@ -44,15 +47,18 @@ while True:
         print(stages[life])
         print(f"{' '.join(display)}")
         print(f"{' '.join(letters)}")
-
+        
+        # Win condition
         if not "_" in display:
             print("YOU WIN!")
             game_on = False
-
+        
+        # Lose condition
         if life == 0:
             print(f'GAME OVER!\nThe word was "{chosen_word}"')
             game_on = False
-
+    
+    # replay?
     replay = input("Would you like to play again: Y or N?").lower()
     if replay == "y":
         print("\n" * 80)
